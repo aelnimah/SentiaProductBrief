@@ -1,0 +1,53 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <radialGradient id="pupilGradientV4" cx="50%" cy="50%" r="50%" fx="25%" fy="25%">
+      <stop offset="0%" stop-color="#22D3EE" />
+      <stop offset="100%" stop-color="#4F46E5" />
+    </radialGradient>
+    <linearGradient id="outerShapeGradientV4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6D28D9" />
+      <stop offset="100%" stop-color="#4F46E5" />
+    </linearGradient>
+    <linearGradient id="middleLayerGradientV4" x1="50%" y1="0%" x2="50%" y2="100%">
+        <stop offset="0%" stop-color="#FFFFFF" />
+        <stop offset="100%" stop-color="#E5E7EB" />
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="outerShadowV4" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#312E81" flood-opacity="0.25" />
+    </filter>
+
+    <filter id="innerShadowV4" x="-50%" y="-50%" width="200%" height="200%">
+      <feComponentTransfer in="SourceAlpha">
+        <feFuncA type="table" tableValues="1 0" />
+      </feComponentTransfer>
+      <feGaussianBlur stdDeviation="3" />
+      <feOffset dx="0" dy="2" result="offsetblur" />
+      <feFlood flood-color="#000000" flood-opacity="0.2" result="color" />
+      <feComposite in2="offsetblur" operator="in" />
+      <feComposite in2="SourceAlpha" operator="out" />
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g filter="url(#outerShadowV4)">
+    <!-- Outer Layer -->
+    <path d="M10,60 C10,40 30,15 60,15 C90,15 110,40 110,60 C105,80 90,105 60,105 C30,105 15,80 10,60 Z" fill="url(#outerShapeGradientV4)"/>
+
+    <!-- Middle Layer with Inner Shadow -->
+    <g filter="url(#innerShadowV4)">
+      <path d="M15,60 C15,45 35,25 60,25 C85,25 105,45 105,60 C100,75 85,95 60,95 C35,95 20,75 15,60 Z" fill="url(#middleLayerGradientV4)"/>
+    </g>
+
+    <!-- Pupil -->
+    <path d="M25,60 C25,50 40,35 60,35 C80,35 95,50 95,60 C90,70 80,85 60,85 C40,85 30,70 25,60 Z" fill="url(#pupilGradientV4)"/>
+    
+    <!-- Glint -->
+    <circle cx="52" cy="52" r="5" fill="white" opacity="0.9"/>
+  </g>
+</svg> 
