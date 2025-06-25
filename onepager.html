@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sentia - One Page Summary | SpurHacks 2025</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f172a;
+            color: white;
+            line-height: 1.4;
+            padding: 20px;
+        }
+
+        .one-pager {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .left-column, .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .section {
+            padding: 15px;
+            background: rgba(59, 130, 246, 0.05);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            border-radius: 12px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-content {
+            font-size: 13px;
+            line-height: 1.4;
+            color: #e2e8f0;
+        }
+
+        .highlight {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .problem-item {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 8px;
+            padding: 8px;
+        }
+
+        .problem-item h4 {
+            color: #ef4444;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .problem-item p {
+            color: #cbd5e1;
+            font-size: 11px;
+        }
+
+        .solution-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .solution-list li {
+            padding: 4px 0;
+            color: #cbd5e1;
+            position: relative;
+            padding-left: 20px;
+            font-size: 12px;
+        }
+
+        .solution-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .market-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .market-item {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 8px;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .market-item .amount {
+            font-size: 18px;
+            font-weight: 700;
+            color: #8b5cf6;
+            margin-bottom: 2px;
+        }
+
+        .market-item .label {
+            color: #cbd5e1;
+            font-size: 10px;
+        }
+
+        .revenue-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .revenue-list li {
+            padding: 4px 0;
+            color: #cbd5e1;
+            position: relative;
+            padding-left: 20px;
+            font-size: 12px;
+        }
+
+        .revenue-list li::before {
+            content: "💰";
+            position: absolute;
+            left: 0;
+        }
+
+        .traction-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .traction-item {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-radius: 8px;
+            padding: 8px;
+        }
+
+        .traction-item h4 {
+            color: #f59e0b;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .traction-item p {
+            color: #cbd5e1;
+            font-size: 11px;
+        }
+
+        .investment-box {
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .investment-amount {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .investment-details {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 13px;
+        }
+
+        .competitive-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .competitive-item {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 8px;
+            padding: 8px;
+        }
+
+        .competitive-item h4 {
+            color: #10b981;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .competitive-item p {
+            color: #cbd5e1;
+            font-size: 11px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .footer-text {
+            font-size: 14px;
+            color: #10b981;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .contact-info {
+            color: #64748b;
+            font-size: 11px;
+        }
+
+        @media print {
+            body {
+                background: #0f172a !important;
+                color: white !important;
+                padding: 10px;
+            }
+            
+            .one-pager {
+                background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+                box-shadow: none;
+                border: 1px solid rgba(59, 130, 246, 0.2);
+                padding: 20px;
+            }
+
+            .content-grid {
+                gap: 12px;
+            }
+
+            .section {
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="one-pager">
+<!-- Header -->
+<div class="header">
+<div class="logo">
+    <img src="public/sentia-logo-v4.svg" alt="Sentia Logo">
+
+</div>
+<h1 class="title">Sentia</h1>
+<p class="subtitle">AI-Powered News Insights Platform | SpurHacks 2025</p>
+</div>
+<!-- Two Column Layout -->
+<div class="content-grid">
+<!-- Left Column -->
+<div class="left-column">
+<!-- Problem Statement -->
+<div class="section">
+<h2 class="section-title">🎯 Problem</h2>
+<div class="section-content">
+<p>Users face <span class="highlight">information overload</span> from generic news feeds and <span class="highlight">echo chambers</span> that limit diverse perspectives.</p>
+<div class="problem-grid">
+<div class="problem-item">
+<h4>Information Overload</h4>
+<p>Generic feeds don't match interests or provide actionable insights</p>
+</div>
+<div class="problem-item">
+<h4>Echo Chambers</h4>
+<p>Algorithms reinforce beliefs, limiting diverse perspectives</p>
+</div>
+<div class="problem-item">
+<h4>Lack of Context</h4>
+<p>No explanation of how news impacts careers or interests</p>
+</div>
+<div class="problem-item">
+<h4>Trust Issues</h4>
+<p>No transparency about source reliability or bias</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Solution -->
+<div class="section">
+<h2 class="section-title">💡 Solution</h2>
+<div class="section-content">
+<p><span class="highlight">Sentia</span> delivers personalized AI-powered news insights with reliability scoring and opposing viewpoints.</p>
+<ul class="solution-list">
+<li><strong>AI Personalization:</strong> Understands user context and career interests</li>
+<li><strong>Career Impact:</strong> Explains how news affects career paths</li>
+<li><strong>Opposing Views:</strong> Reduces echo chambers with balanced perspectives</li>
+<li><strong>Reliability Scoring:</strong> Transparent source credibility metrics</li>
+<li><strong>Interactive AI Chat:</strong> Deep dive with contextual questions</li>
+<li><strong>PWA Technology:</strong> Native app experience without app stores</li>
+</ul>
+</div>
+</div>
+<!-- Market Research -->
+<div class="section">
+    <h2 class="section-title">📊 Market</h2>
+    <div class="section-content">
+    <div class="market-grid">
+    <div class="market-item">
+    <div class="amount">$50B</div>
+    <div class="label">TAM</div>
+    </div>
+    <div class="market-item">
+    <div class="amount">$15B</div>
+    <div class="label">SAM</div>
+    </div>
+    <div class="market-item">
+    <div class="amount">$2.5B</div>
+    <div class="label">SOM</div>
+    </div>
+    </div>
+    <p style="margin-top: 10px; font-size: 12px;"><strong>Target:</strong> Tech professionals, students, and knowledge workers aged 18-45 who value personalized, trustworthy news consumption.</p>
+    </div>
+    <p style="margin-top: 10px; font-size: 11px; color: #64748b;">Source: Statista (Digital News Market), Reuters Digital News Report 2024, Pew Research. Estimates reflect global ($50B), serviceable ($15B), and AI personalization niche markets ($2.5B).</p></div>
+    </div>
+<!-- Right Column -->
+<div class="right-column">
+<!-- Business Model -->
+<div class="section">
+<h2 class="section-title">💼 Business Model</h2>
+<div class="section-content">
+<ul class="revenue-list">
+<li><strong>Freemium:</strong> Free tier + Premium ($9.99/month) for advanced AI insights</li>
+<li><strong>Enterprise:</strong> Custom solutions for companies and market intelligence</li>
+<li><strong>Data Insights:</strong> Anonymized trend analysis for businesses</li>
+<li><strong>API Licensing:</strong> AI algorithms for other news platforms</li>
+</ul>
+</div>
+</div>
+<!-- Traction & Plans -->
+<div class="section">
+<h2 class="section-title">📈 Traction</h2>
+<div class="section-content">
+<div class="traction-grid">
+<div class="traction-item">
+<h4>Current</h4>
+<p>Complete MVP with PWA, AI integration, modern UI, and demo profile</p>
+</div>
+<div class="traction-item">
+<h4>Next 12 Months</h4>
+<p>Beta launch, news API integration, expansion to major cities</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Investment Ask -->
+<div class="section">
+<h2 class="section-title">🎯 Investment</h2>
+<div class="section-content">
+<div class="investment-box">
+<div class="investment-amount">$5,000</div>
+<div class="investment-details">Seed funding for product development and team growth</div>
+</div>
+<p style="margin-top: 10px; font-size: 12px;"><strong>Unit Economics:</strong> CAC: $15 | LTV: $300 | Payback: 6 months</p>
+
+</div>
+</div>
+<!-- Competitive Advantage -->
+<div class="section">
+<h2 class="section-title">🏆 Competitive Edge</h2>
+<div class="section-content">
+<div class="competitive-grid">
+<div class="competitive-item">
+<h4>vs. Traditional News</h4>
+<p>Generic → Personalized | No context → Career impact | Echo chambers → Opposing views</p>
+</div>
+<div class="competitive-item">
+<h4>vs. Social Media</h4>
+<p>Engagement → Quality | Misinfo → Fact-checked | No metrics → Reliability scoring</p>
+</div>
+<div class="competitive-item">
+<h4>vs. Aggregators</h4>
+<p>Basic filtering → AI personalization | Single view → Multiple perspectives</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="footer"><p class="footer-text">Ahmed Elnimah</p></div>
+</div>
+</body>
+</html> 
