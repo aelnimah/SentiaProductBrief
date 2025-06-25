@@ -74,9 +74,11 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
+            margin-bottom: 20px;
+            align-items: start;
         }
 
-        .left-column, .right-column {
+        .right-column {
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -87,6 +89,13 @@
             background: rgba(59, 130, 246, 0.05);
             border: 1px solid rgba(59, 130, 246, 0.1);
             border-radius: 12px;
+            height: fit-content;
+            margin: 0;
+        }
+
+        .section-divider {
+            margin: 30px 0;
+            border-top: 2px solid rgba(59, 130, 246, 0.2);
         }
 
         .section-title {
@@ -103,11 +112,58 @@
             font-size: 13px;
             line-height: 1.4;
             color: #e2e8f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .demo-section .section-content {
+            padding: 0;
+            margin: 0;
         }
 
         .highlight {
             color: #3b82f6;
             font-weight: 600;
+        }
+
+        .video-container {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            margin: 0;
+            padding: 0;
+            line-height: 0;
+        }
+
+        .video-fallback {
+            margin-top: 8px;
+            font-size: 12px;
+            text-align: center;
+            margin-bottom: 0;
+            padding: 0;
+        }
+
+        .video-fallback a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        .video-fallback a:hover {
+            text-decoration: underline;
         }
 
         .problem-grid {
@@ -138,6 +194,8 @@
         .solution-list {
             list-style: none;
             margin-top: 10px;
+            margin-bottom: 0;
+            padding: 0;
         }
 
         .solution-list li {
@@ -146,6 +204,7 @@
             position: relative;
             padding-left: 20px;
             font-size: 12px;
+            margin: 0;
         }
 
         .solution-list li::before {
@@ -186,6 +245,8 @@
         .revenue-list {
             list-style: none;
             margin-top: 10px;
+            margin-bottom: 0;
+            padding: 0;
         }
 
         .revenue-list li {
@@ -194,6 +255,7 @@
             position: relative;
             padding-left: 20px;
             font-size: 12px;
+            margin: 0;
         }
 
         .revenue-list li::before {
@@ -233,6 +295,7 @@
             padding: 15px;
             text-align: center;
             margin-top: 10px;
+            margin-bottom: 0;
         }
 
         .investment-amount {
@@ -240,11 +303,13 @@
             font-weight: 700;
             color: white;
             margin-bottom: 5px;
+            margin-top: 0;
         }
 
         .investment-details {
             color: rgba(255, 255, 255, 0.9);
             font-size: 13px;
+            margin: 0;
         }
 
         .competitive-grid {
@@ -286,9 +351,16 @@
             margin-bottom: 8px;
         }
 
-        .contact-info {
-            color: #64748b;
-            font-size: 11px;
+        .footer-email {
+            color: #3b82f6;
+            font-size: 12px;
+            text-decoration: none;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .footer-email:hover {
+            text-decoration: underline;
         }
 
         @media print {
@@ -319,12 +391,13 @@
                 padding: 15px;
             }
             
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-            
             .title {
                 font-size: 24px;
+            }
+
+            .video-container {
+                max-width: 100%;
+                margin: 0 auto;
             }
         }
     </style>
@@ -335,37 +408,34 @@
 <div class="header">
 <div class="logo">
     <img src="sentia-logo-v4.svg" alt="Sentia Logo" />
-
 </div>
 <h1 class="title">Sentia</h1>
 <p class="subtitle">AI-Powered News Insights Platform | SpurHacks 2025</p>
 </div>
-<!-- Demo Video Section -->
-<div class="section">
+
+<!-- Section 1: Demo + Problem/Solution -->
+<div class="content-grid">
+<!-- Demo Video Section - Left Column -->
+<div class="section demo-section">
   <h2 class="section-title">📽 Demo</h2>
-  <div class="section-content" style="display: flex; justify-content: center;">
-    <div style="width: 100%; max-width: 640px; border-radius: 12px; overflow: hidden;">
-      <video autoplay muted loop playsinline style="width: 100%; border-radius: 12px;">
+  <div class="section-content">
+    <div class="video-container">
+      <video autoplay muted loop playsinline>
         <source src="sentia-demo.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <!-- Optional YouTube Fallback -->
-      <p style="margin-top: 8px; font-size: 12px; text-align: center;">
-        <a href="https://youtube.com/shorts/i_Ai1o_6uzQ?feature=share" target="_blank" style="color: #3b82f6;">
-          Watch on YouTube instead
-        </a>
-      </p>
+    </div>
+    <div class="video-fallback">
+      <a href="https://youtube.com/shorts/i_Ai1o_6uzQ?feature=share" target="_blank">
+        Watch on YouTube instead
+      </a>
     </div>
   </div>
 </div>
 
-
-
-<!-- Two Column Layout -->
-<div class="content-grid">
-<!-- Left Column -->
-<div class="left-column">
-<!-- Problem Statement -->
+<!-- Right Column Container -->
+<div class="right-column">
+<!-- Problem Section -->
 <div class="section">
 <h2 class="section-title">🎯 Problem</h2>
 <div class="section-content">
@@ -390,7 +460,8 @@
 </div>
 </div>
 </div>
-<!-- Solution -->
+
+<!-- Solution Section -->
 <div class="section">
 <h2 class="section-title">💡 Solution</h2>
 <div class="section-content">
@@ -405,31 +476,37 @@
 </ul>
 </div>
 </div>
-<!-- Market Research -->
+</div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- Section 2: Business Content -->
+<div class="content-grid">
+<!-- Market Research - Left Column -->
 <div class="section">
     <h2 class="section-title">📊 Market</h2>
     <div class="section-content">
-    <div class="market-grid">
-    <div class="market-item">
-    <div class="amount">$50B</div>
-    <div class="label">TAM</div>
+        <div class="market-grid">
+            <div class="market-item">
+                <div class="amount">$50B</div>
+                <div class="label">TAM</div>
+            </div>
+            <div class="market-item">
+                <div class="amount">$15B</div>
+                <div class="label">SAM</div>
+            </div>
+            <div class="market-item">
+                <div class="amount">$2.5B</div>
+                <div class="label">SOM</div>
+            </div>
+        </div>
+        <p style="margin-top: 10px; font-size: 12px;"><strong>Target:</strong> Tech professionals, students, and knowledge workers aged 18-45 who value personalized, trustworthy news consumption.</p>
+        <p style="margin-top: 10px; font-size: 11px; color: #64748b;">Source: Statista (Digital News Market), Reuters Digital News Report 2024, Pew Research. Estimates reflect global ($50B), serviceable ($15B), and AI personalization niche markets ($2.5B).</p>
     </div>
-    <div class="market-item">
-    <div class="amount">$15B</div>
-    <div class="label">SAM</div>
-    </div>
-    <div class="market-item">
-    <div class="amount">$2.5B</div>
-    <div class="label">SOM</div>
-    </div>
-    </div>
-    <p style="margin-top: 10px; font-size: 12px;"><strong>Target:</strong> Tech professionals, students, and knowledge workers aged 18-45 who value personalized, trustworthy news consumption.</p>
-    </div>
-    <p style="margin-top: 10px; font-size: 11px; color: #64748b;">Source: Statista (Digital News Market), Reuters Digital News Report 2024, Pew Research. Estimates reflect global ($50B), serviceable ($15B), and AI personalization niche markets ($2.5B).</p></div>
-    </div>
-<!-- Right Column -->
-<div class="right-column">
-<!-- Business Model -->
+</div>
+
+<!-- Business Model - Right Column -->
 <div class="section">
 <h2 class="section-title">💼 Business Model</h2>
 <div class="section-content">
@@ -441,7 +518,8 @@
 </ul>
 </div>
 </div>
-<!-- Traction & Plans -->
+
+<!-- Traction & Plans - Left Column -->
 <div class="section">
 <h2 class="section-title">📈 Traction</h2>
 <div class="section-content">
@@ -457,7 +535,8 @@
 </div>
 </div>
 </div>
-<!-- Investment Ask -->
+
+<!-- Investment Ask - Right Column -->
 <div class="section">
 <h2 class="section-title">🎯 Investment</h2>
 <div class="section-content">
@@ -466,11 +545,11 @@
 <div class="investment-details">Seed funding for product development and team growth</div>
 </div>
 <p style="margin-top: 10px; font-size: 12px;"><strong>Unit Economics:</strong> CAC: $15 | LTV: $300 | Payback: 6 months</p>
+</div>
+</div>
 
-</div>
-</div>
-<!-- Competitive Advantage -->
-<div class="section">
+<!-- Competitive Advantage - Full Width -->
+<div class="section" style="grid-column: 1 / -1;">
 <h2 class="section-title">🏆 Competitive Edge</h2>
 <div class="section-content">
 <div class="competitive-grid">
@@ -491,8 +570,13 @@
 </div>
 </div>
 </div>
+</div>
+
 <!-- Footer -->
-<div class="footer"><p class="footer-text">Ahmed Elnimah</p></div>
+<div class="footer">
+    <p class="footer-text">Ahmed Elnimah</p>
+    <a href="mailto:elnimaha@gmail.com" class="footer-email">elnimaha@gmail.com</a>
+</div>
 </div>
 </body>
 </html> 
